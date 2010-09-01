@@ -1,0 +1,42 @@
+A node.JS C++ addon for representing big numbers in base62.
+Suitable for URL shortening services, or any other similar service.
+
+It was written by Amir Mohammad Saied <amirsaied@gmail.com>.
+-------------------------------------------------------------------------------
+
+To build the module run:
+
+    node-waf configure build
+
+This will produce `base62.node` binary module. To use it, make sure the
+module's directory is in NODE_PATH.
+
+The module exports two functions `encode`, and `decode`.
+
+encode
+------
+
+Encodes an integer to base62.
+
+Here is a basic example:
+
+    var sys = require('sys');
+    var b62 = require('base62);
+
+    sys.print(b62.encode(123456789));
+
+    /* Output: 8m0Kx */
+
+decode
+------
+
+Decodes a string to the original integer encoded by encode function.
+
+    var sys = require('sys');
+    var b62 = require('base62');
+
+    sys.print(b62.decode('8m0Kx'));
+
+    /* Output: 123456789 */
+
+-------------------------------------------------------------------------------
