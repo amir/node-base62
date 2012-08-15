@@ -1,0 +1,20 @@
+{
+    "name": "node-base62",
+    "version": "0.1.1",
+    "author": "Amir Mohammad Saied <amir@gluegadget.com>",
+    "description": "A node.JS C++ addon for representing big numbers in base62.",
+    "keywords": [
+        "base62"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/amir/node-base62.git"
+    },
+    "scripts": {
+        "preinstall": "node-waf configure build"
+    },
+    "main": "./build/Release/base62",
+    "engine": {
+        "node": ">=0.2"
+    }
+}
