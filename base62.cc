@@ -55,7 +55,7 @@ strreverse_inplace (char *str)
 }
 
 bool
-base62_encode (uint32_t val, char *str, size_t len)
+base62_encode (uint64_t val, char *str, size_t len)
 {
     int i = 0;
     int v;
@@ -76,10 +76,10 @@ base62_encode (uint32_t val, char *str, size_t len)
     return true;
 }
 
-uint32_t
+uint64_t
 base62_decode (const char *str)
 {
-    uint32_t val = 0;
+    uint64_t val = 0;
     char c;
     int len;
     int i;
@@ -108,11 +108,11 @@ base62_decode_binding(const Arguments &args)
     if (!args[0]->IsString())
         return EXCEPTION("The value should be a string");
 
-    uint32_t decoded;
+    uint64_t decoded;
     String::AsciiValue b62data(args[0]->ToString());
     decoded = base62_decode(*b62data);
 
-    return scope.Close(Uint32::New(decoded));
+    return scope.Close(Integer::New(decoded));
 }
 
 Handle<Value>
@@ -122,11 +122,11 @@ base62_encode_binding(const Arguments &args)
     if (args.Length() != 1)
         return EXCEPTION("One argument required");
 
-    if (!args[0]->IsUint32())
+    if (!args[0]->IsNumber())
         return EXCEPTION("The value should be an integer");
 
     char encoded[12];
-    uint32_t value = args[0]->Uint32Value();
+    uint64_t value = args[0]->IntegerValue();
 
     base62_encode(value, encoded, sizeof(encoded));
 
