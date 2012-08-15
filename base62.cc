@@ -92,7 +92,7 @@ base62_decode (const char *str)
         if (!isalnum(c)) {
             return -1;
         }
-        val += base62_index[c] * pow(62, len - i - 1);
+        val += base62_index[c] * powl(62, len - i - 1);
     }
 
     return val; 
