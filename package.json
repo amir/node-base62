@@ -3,6 +3,11 @@
     "version": "0.1.1",
     "author": "Amir Mohammad Saied <amir@gluegadget.com>",
     "description": "A node.JS C++ addon for representing big numbers in base62.",
+    "contributors": [
+    {
+        "name": "Ryan Curtis"
+    }
+    ],
     "keywords": [
         "base62"
     ],
